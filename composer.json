@@ -1,0 +1,31 @@
+{
+    "name": "trainjunkies-packages/network-rail-schedule-file-parser",
+    "description": "Parse Network Rail Schedule JSON file",
+    "license": "proprietary",
+    "type": "library",
+    "require": {
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.4",
+        "mikey179/vfsStream": "^1.6",
+        "squizlabs/php_codesniffer": "^3.4",
+        "bossa/phpspec2-expect": "^2.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "TrainjunkiesPackages\\": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+        "sniff": "bin/phpcs -sp --standard=PSR2 src/",
+        "beauty": "bin/phpcbf --standard=PSR2 src/",
+        "spec": "bin/phpspec run --format=pretty --no-code-generation --stop-on-failure",
+        "ci": [
+            "@sniff",
+            "@spec"
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: ./docker/app
+    environment:
+      - PHP_IDE_CONFIG=serverName=trainjunkies_packages_schedule_file_parser
+      - COMPOSER_ALLOW_SUPERUSER=!
+    working_dir: /app
+    env_file: .env
+    volumes:
+        - .:/app
