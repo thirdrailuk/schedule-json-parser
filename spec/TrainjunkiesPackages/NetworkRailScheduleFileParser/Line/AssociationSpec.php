@@ -70,6 +70,16 @@ class AssociationSpec extends ObjectBehavior
         });
     }
 
+    function it_can_get_generator_from_schedule_file()
+    {
+        foreach ($this->each() as $schedule) {
+            expect($schedule)->shouldBeAnyOf([
+                self::ASSOCIATION_L1,
+                self::ASSOCIATION_L2,
+            ]);
+        }
+    }
+
     public function getMatchers()
     {
         return [

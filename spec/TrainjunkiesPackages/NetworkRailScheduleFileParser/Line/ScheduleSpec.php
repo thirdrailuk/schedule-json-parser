@@ -64,6 +64,17 @@ class ScheduleSpec extends ObjectBehavior
         });
     }
 
+    function it_can_get_generator_from_schedule_file()
+    {
+        foreach ($this->each() as $schedule) {
+            expect($schedule)->shouldBeAnyOf([
+                self::SCHEDULE_L1,
+                self::SCHEDULE_L2,
+                self::SCHEDULE_L3,
+            ]);
+        }
+    }
+
     public function getMatchers()
     {
         return [

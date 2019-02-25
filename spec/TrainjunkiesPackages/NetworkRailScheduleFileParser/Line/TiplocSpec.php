@@ -75,6 +75,18 @@ class TiplocSpec extends ObjectBehavior
         });
     }
 
+    function it_can_get_generator_from_schedule_file()
+    {
+        foreach ($this->each() as $schedule) {
+            expect($schedule)->shouldBeAnyOf([
+                self::TIPLOC_L1,
+                self::TIPLOC_L2,
+                self::TIPLOC_L3,
+                self::TIPLOC_L4,
+            ]);
+        }
+    }
+
     public function getMatchers()
     {
         return [
