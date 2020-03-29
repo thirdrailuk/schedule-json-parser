@@ -6,10 +6,11 @@
     "require": {
     },
     "require-dev": {
-        "phpspec/phpspec": "^3.4",
         "mikey179/vfsStream": "^1.6",
-        "squizlabs/php_codesniffer": "^3.4",
-        "bossa/phpspec2-expect": "^2.3"
+        "phpspec/phpspec": "^6.1",
+        "phpstan/phpstan": "^0.12.18",
+        "phpunit/phpunit": "^8.5",
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "autoload": {
         "psr-0": {
@@ -17,15 +18,20 @@
         }
     },
     "config": {
+        "sort-packages": true,
         "bin-dir": "bin"
     },
     "scripts": {
-        "sniff": "bin/phpcs -sp --standard=PSR2 src/",
-        "beauty": "bin/phpcbf --standard=PSR2 src/",
-        "spec": "bin/phpspec run --format=pretty --no-code-generation --stop-on-failure",
+        "sniff": "bin/phpcs --colors --cache --standard=PSR2 -p -s -v src/ --colors",
+        "beauty": "bin/phpcbf --standard=PSR2 src/ --colors",
+        "static": "bin/phpstan analyse src/ --level=max --ansi --verbose",
+        "spec": "bin/phpspec run --format=pretty --no-code-generation --stop-on-failure --ansi",
+        "integration": "bin/phpunit --stop-on-defect --stop-on-incomplete --stop-on-error --colors=always --verbose",
         "ci": [
             "@sniff",
-            "@spec"
+            "@static",
+            "@spec",
+            "@integration"
         ]
     }
 }
