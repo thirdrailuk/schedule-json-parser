@@ -26,6 +26,7 @@ class Parser
      * @param callable $schedule
      *
      * @return void
+     * @throws JsonException
      */
     public function parse(
         callable $meta,
