@@ -28,6 +28,7 @@ class Parser
         callable $association,
         callable $schedule
     ) {
+        /** @var string $line */
         foreach ($this->each() as $line) {
             $callbackName = $this->lineType($line);
 
