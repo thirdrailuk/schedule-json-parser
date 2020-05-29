@@ -3,10 +3,9 @@
 namespace Tests;
 
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use TrainjunkiesPackages\NetworkRailScheduleFileParser\Parser;
+use TrainjunkiesPackages\ScheduleJsonParser\Factory;
 
 class ParserTest extends TestCase
 {
@@ -19,39 +18,29 @@ class ParserTest extends TestCase
             'root',
             null,
             [
-                'import-file' => $this->importFileContents()
+                'json-file' => $this->jsonFileContents()
             ]
         );
 
-        $parser = new Parser(
-            new \SplFileObject(vfsStream::url('root/import-file'))
-        );
+        $parser = Factory::create(vfsStream::url('root/json-file'));
 
         $parser->parse(
-            function($string) {
-                $json = json_decode($string,true);
-
-                Assert::assertEquals('JsonTimetableV1', array_key_first($json));
+            function(array $data) {
+                Assert::assertEquals('JsonTimetableV1', array_key_first($data));
             },
-            function($string) {
-                $json = json_decode($string,true);
-
-                Assert::assertEquals('TiplocV1', array_key_first($json));
+            function(array $data) {
+                Assert::assertEquals('TiplocV1', array_key_first($data));
             },
-            function($string) {
-                $json = json_decode($string,true);
-
-                Assert::assertEquals('JsonAssociationV1', array_key_first($json));
+            function(array $data) {
+                Assert::assertEquals('JsonAssociationV1', array_key_first($data));
             },
-            function($string) {
-                $json = json_decode($string,true);
-
-                Assert::assertEquals('JsonScheduleV1', array_key_first($json));
+            function(array $data) {
+                Assert::assertEquals('JsonScheduleV1', array_key_first($data));
             }
         );
     }
 
-    private function importFileContents()
+    private function jsonFileContents()
     {
         return <<<STRING
 {"JsonTimetableV1":{"classification":"public","timestamp":1583971522,"owner":"Network Rail","Sender":{"organisation":"Rockshore","application":"NTROD","component":"SCHEDULE"},"Metadata":{"type":"full","sequence":2828}}}

@@ -1,6 +1,6 @@
 <?php
 
-namespace TrainjunkiesPackages\NetworkRailScheduleFileParser;
+namespace TrainjunkiesPackages\ScheduleJsonParser;
 
 class Parser
 {
@@ -9,9 +9,14 @@ class Parser
      */
     private $splFileObject;
 
-    public function __construct(\SplFileObject $splFileObject)
+    private function __construct(\SplFileObject $splFileObject)
     {
         $this->splFileObject = $splFileObject;
+    }
+
+    public static function fromJsonFile(\SplFileObject $splFileObject): self
+    {
+        return new self($splFileObject);
     }
 
     /**
@@ -21,6 +26,7 @@ class Parser
      * @param callable $schedule
      *
      * @return void
+     * @throws JsonException
      */
     public function parse(
         callable $meta,
@@ -28,11 +34,14 @@ class Parser
         callable $association,
         callable $schedule
     ) {
+        /** @var string $line */
         foreach ($this->each() as $line) {
             $callbackName = $this->lineType($line);
 
             if (isset($$callbackName)) {
-                $$callbackName($line);
+                $$callbackName(
+                    JsonHandler::decode($line, true)
+                );
             }
         }
     }
