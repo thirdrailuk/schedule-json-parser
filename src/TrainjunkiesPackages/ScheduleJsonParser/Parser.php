@@ -9,9 +9,14 @@ class Parser
      */
     private $splFileObject;
 
-    public function __construct(\SplFileObject $splFileObject)
+    private function __construct(\SplFileObject $splFileObject)
     {
         $this->splFileObject = $splFileObject;
+    }
+
+    public static function fromJsonFile(\SplFileObject $splFileObject): self
+    {
+        return new self($splFileObject);
     }
 
     /**
@@ -33,7 +38,9 @@ class Parser
             $callbackName = $this->lineType($line);
 
             if (isset($$callbackName)) {
-                $$callbackName($line);
+                $$callbackName(
+                    JsonHandler::decode($line, true)
+                );
             }
         }
     }
