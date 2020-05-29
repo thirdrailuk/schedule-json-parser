@@ -1,6 +1,8 @@
 # Trainjunkies - Schedule JSON Parser
 
 ![CI](https://github.com/trainjunkies-packages/schedule-json-parser/workflows/CI/badge.svg)
+[![Latest Stable Version](https://poser.pugx.org/trainjunkies-packages/schedule-json-parser/v)](https://packagist.org/packages/trainjunkies-packages/schedule-json-parser)
+[![License](https://poser.pugx.org/trainjunkies-packages/schedule-json-parser/license)](https://packagist.org/packages/trainjunkies-packages/schedule-json-parser)
 
 PHP package to parse Network Rail Schedule JSON file.
 
@@ -11,7 +13,7 @@ PHP package to parse Network Rail Schedule JSON file.
 Install [Composer](https://getcomposer.org/doc/00-intro.md)  and require the package with the below command.
 
 ```bash
-composer require trainjunkies-packages/schedule-json-parser
+composer.phar require trainjunkies-packages/schedule-json-parser
 ```
 ## Getting Started
 
