@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\TrainjunkiesPackages\NetworkRailScheduleFileParser;
+namespace spec\TrainjunkiesPackages\ScheduleJsonParser;
 
 use PHPUnit\Framework\Assert;
-use TrainjunkiesPackages\NetworkRailScheduleFileParser\Parser;
+use TrainjunkiesPackages\ScheduleJsonParser\Parser;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

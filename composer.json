@@ -1,7 +1,7 @@
 {
-    "name": "trainjunkies-packages/network-rail-schedule-file-parser",
+    "name": "trainjunkies-packages/schedule-json-parser",
     "description": "Parse Network Rail Schedule JSON file",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "library",
     "require": {
         "php": "^7.2",

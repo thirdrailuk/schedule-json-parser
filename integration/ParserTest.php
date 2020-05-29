@@ -3,10 +3,9 @@
 namespace Tests;
 
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use TrainjunkiesPackages\NetworkRailScheduleFileParser\Parser;
+use TrainjunkiesPackages\ScheduleJsonParser\Parser;
 
 class ParserTest extends TestCase
 {

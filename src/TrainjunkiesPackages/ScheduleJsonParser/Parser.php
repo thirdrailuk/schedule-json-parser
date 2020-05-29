@@ -1,6 +1,6 @@
 <?php
 
-namespace TrainjunkiesPackages\NetworkRailScheduleFileParser;
+namespace TrainjunkiesPackages\ScheduleJsonParser;
 
 class Parser
 {
