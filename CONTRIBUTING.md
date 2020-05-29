@@ -13,7 +13,7 @@
 To install the project and run the tests, you need to clone it first:
 
 ```bash
-$ git clone git@github.com:trainjunkies-packages/schedule-json-parser.git
+git clone git@github.com:trainjunkies-packages/schedule-json-parser.git
 ```
 
 You will then need to run a [Composer](https://getcomposer.org/) installation:
@@ -21,7 +21,7 @@ You will then need to run a [Composer](https://getcomposer.org/) installation:
 ```bash
 cd schedule-json-parser
 curl -s https://getcomposer.org/installer | php
-php composer.phar update
+composer.phar update
 ```
 
 ### Docker Container
