@@ -4,13 +4,16 @@
     "license": "proprietary",
     "type": "library",
     "require": {
+        "php": "^7.2",
+        "ext-json": "*"
     },
     "require-dev": {
-        "mikey179/vfsStream": "^1.6",
+        "mikey179/vfsstream": "^1.6",
         "phpspec/phpspec": "^6.1",
         "phpstan/phpstan": "^0.12.18",
         "phpunit/phpunit": "^8.5",
-        "squizlabs/php_codesniffer": "^3.4"
+        "squizlabs/php_codesniffer": "^3.4",
+        "vimeo/psalm": "^3.11"
     },
     "autoload": {
         "psr-0": {
@@ -24,12 +27,14 @@
     "scripts": {
         "sniff": "bin/phpcs --colors --cache --standard=PSR2 -p -s -v src/ --colors",
         "beauty": "bin/phpcbf --standard=PSR2 src/ --colors",
-        "static": "bin/phpstan analyse src/ --level=max --ansi --verbose",
+        "stan": "bin/phpstan analyse src/ --level=max --ansi --verbose",
+        "psalm": "bin/psalm --no-cache --long-progress",
         "spec": "bin/phpspec run --format=pretty --no-code-generation --stop-on-failure --ansi",
         "integration": "bin/phpunit --stop-on-defect --stop-on-incomplete --stop-on-error --colors=always --verbose",
         "ci": [
             "@sniff",
-            "@static",
+            "@stan",
+            "@psalm",
             "@spec",
             "@integration"
         ]
